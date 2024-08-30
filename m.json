@@ -1,13 +1,13 @@
 {
-  "name": "CustomTVBoxSource",
+  "name": "自定义源",
   "type": 3,
   "searchable": 1,
   "quickSearch": 0,
-  "filterable": 1,
+  "filterable": 0,
   "ext": {
     "ua": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
   },
-  "categories": [
+  "class": [
     {
       "type_id": "1",
       "type_name": "电影"
@@ -17,6 +17,7 @@
       "type_name": "电视剧"
     }
   ],
+  "filter": {},
   "homeContent": {
     "url": "https://api.example.com/home",
     "method": "GET"
@@ -24,20 +25,29 @@
   "categoryContent": {
     "url": "https://api.example.com/category?type={type_id}&pg={pg}",
     "method": "GET",
-    "params": {
-      "pg": "1"
+    "header": {
+      "User-Agent": "{ua}"
     }
   },
   "detailContent": {
-    "url": "https://api.example.com/detail/{vod_id}",
-    "method": "GET"
+    "url": "https://api.example.com/detail?vod_id={vod_id}",
+    "method": "GET",
+    "header": {
+      "User-Agent": "{ua}"
+    }
   },
   "searchContent": {
-    "url": "https://api.example.com/search?keyword={wd}",
-    "method": "GET"
+    "url": "https://api.example.com/search?query={wd}",
+    "method": "GET",
+    "header": {
+      "User-Agent": "{ua}"
+    }
   },
   "playContent": {
-    "url": "https://api.example.com/play?url={vod_play_url}",
-    "method": "GET"
+    "url": "https://api.example.com/play?vod_id={vod_id}",
+    "method": "GET",
+    "header": {
+      "User-Agent": "{ua}"
+    }
   }
 }
