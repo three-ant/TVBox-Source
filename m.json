@@ -1,74 +1,65 @@
 {
-  "spider": "./spider.jar;md5;9cc29f6286b2fe7910628852929c4bdb",
-  "wallpaper": "http://我不是.肥猫.live/ppic/feimao.php",
-  "sites": [
+  "name": "CustomTVBoxSource",
+  "type": 3,
+  "api": "https://api.example.com/",
+  "searchable": 1,
+  "quickSearch": 0,
+  "filterable": 1,
+  "categories": [
     {
-      "key": "种子短剧",
-      "name": "💮┃短剧┃视频",
-      "type": 1,
-      "api": "http://zzdj.cc/api.php/provide/vod"
+      "type_id": "1",
+      "type_name": "电影"
+    },
+    {
+      "type_id": "2",
+      "type_name": "电视剧"
     }
   ],
-  "parses": [
-    {
-      "name": "公众号：肥猫宝贝",
-      "type": 1,
-      "url": "http://json.84jia.com/home/api?type=ys&uid=335253&key=demprsyzBMQRVY0234&url=",
-      "ext": {
-        "flag": [
-          "qq",
-          "腾讯",
-          "qiyi",
-          "爱奇艺",
-          "奇艺",
-          "youku",
-          "优酷",
-          "tucheng",
-          "sohu",
-          "搜狐",
-          "letv",
-          "乐视",
-          "mgtv",
-          "芒果",
-          "tnmb",
-          "seven",
-          "yzm",
-          "aliyun",
-          "RJuMao",
-          "bilibili",
-          "1905",
-          "xinvip",
-          "XAL",
-          "qiqi",
-          "XALS",
-          "YuMi-vip"
-        ]
+  "home": {
+    "推荐": {
+      "url": "https://api.example.com/home/recommend",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "TVBox/1.0"
+      }
+    },
+    "最新": {
+      "url": "https://api.example.com/home/latest",
+      "method": "GET",
+      "headers": {
+        "User-Agent": "TVBox/1.0"
       }
     }
-  ],
-  "lives": [
-    {
-      "name": "live",
-      "type": 0,
-      "playerType": 1,
-      "url": "./lib/tvzb.txt",
-      "epg": "http://epg.112114.xyz/?ch={name}&date={date}",
-      "logo": "https://epg.112114.xyz/logo/{name}.png"
+  },
+  "category": {
+    "url": "https://api.example.com/category/{type_id}/page/{pg}",
+    "method": "GET",
+    "headers": {
+      "User-Agent": "TVBox/1.0"
+    },
+    "params": {
+      "pg": "1"
     }
-  ],
-  "rules": [
-    {
-      "name": "量子",
-      "hosts": [
-        "vip.lz",
-        "v.cdnlz",
-        "hd.lz"
-      ],
-      "regex": [
-        "#EXT-X-DISCONTINUITY\\r*\\n*#EXTINF:6.433333,[\\s\\S]*?#EXT-X-DISCONTINUITY",
-        "#EXT-X-DISCONTINUITY\\r*\\n*#EXTINF:18.5333,[\\s\\S]*?#EXT-X-DISCONTINUITY",
-        "#EXTINF.*?\\s+.*?1o.*?\\.ts\\s+"
-      ]
+  },
+  "detail": {
+    "url": "https://api.example.com/video/{vod_id}",
+    "method": "GET",
+    "headers": {
+      "User-Agent": "TVBox/1.0"
     }
-  ]
+  },
+  "search": {
+    "url": "https://api.example.com/search?keyword={wd}",
+    "method": "GET",
+    "headers": {
+      "User-Agent": "TVBox/1.0"
+    }
+  },
+  "play": {
+    "url": "https://api.example.com/play/{vod_id}",
+    "method": "GET",
+    "headers": {
+      "User-Agent": "TVBox/1.0"
+    }
+  }
 }
